@@ -1,0 +1,287 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Draw</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #440000;
+            color: white;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #aa0000;
+            padding: 20px;
+            border: 5px solid #660000;
+        }
+        .header, .footer {
+            text-align: center;
+            background-color: #660000;
+            padding: 10px;
+            color: yellow;
+            font-weight: bold;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+        .welcome {
+            text-align: center;
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        .table-container {
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #440000;
+        }
+        th {
+            background-color: yellow;
+            color: black;
+        }
+        td {
+            background-color: white;
+            color: black;
+        }
+        .card-inputs {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .card-inputs input {
+            flex: 1;
+            margin: 0 10px;
+            padding: 10px;
+            border: 1px solid #440000;
+            font-size: 16px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .buttons button {
+            flex: 1;
+            margin: 0 5px;
+            padding: 10px;
+            background-color: yellow;
+            color: black;
+            border: 1px solid #440000;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .disclaimer {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        .disclaimer a {
+            color: yellow;
+        }
+        .loading-gif {
+            width: 30px; /* Adjust the width as needed */
+            height: 30px; /* Adjust the height as needed */
+        }
+        .calcrow1 {
+            background-image: url(static/lotteryback4.png);
+            background-repeat: repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <table>
+                <tr>
+                    <td valign="top" style="background-repeat: no-repeat; padding: 0px; border: 0px; background-color: transparent;" >
+                        <img src="https://www.shreelaxmilucky.com/images/casino-header-1-gamblingtemplatesdotnet.jpg" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0px; border: 0px; background-color: transparent;">
+                        <img src="https://www.shreelaxmilucky.com/images/casino-header-2-gamblingtemplatesdotnet.jpg" />
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0px; border: 0px;background-color: transparent;">
+                        <img src="https://www.shreelaxmilucky.com/images/casino-header-3-gamblingtemplatesdotnet.jpg" />
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0px; border: 0px; background-color: transparent;">
+                        <img src="https://www.shreelaxmilucky.com/images/casino-header-4-gamblingtemplatesdotnet.jpg"  />
+                    </td>
+                </tr>
+            </table>
+            Draw Time: <span id="draw-time">{{ draw_time }}</span> |
+            Date: <span id="date">{{ date }}</span> |
+            Now Time: <span id="now-time">{{ now_time }}</span> |
+            Time To Draw: <span id="time-to-draw">{{ time_to_draw }}</span>
+        </div>
+        <div class="welcome">WELCOME TO GUEST PLAYER</div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Sr.</th>
+                        <th>Win</th>
+                        <th>0</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                        <th>Qty.</th>
+                        <th>Amount</th>
+                        <th><span id="last-draw-time">{{ last_draw_time }}</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="calcrow1">
+                        <td>ROYAL DIAMOND</td>
+                        <td>A</td>
+                        <td>100</td>
+                        <td colspan="10"></td>
+                        <td><input type="text"/></td>
+                        <td><input type="text"/></td>
+                        <td>
+                            {% if last_draw_result.royal %}
+                                {{ last_draw_result.royal }}
+                            {% else %}
+                                <img src="{% static 'loading.gif' %}" alt="Loading..." class="loading-gif"/>
+                            {% endif %}
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>DELUXE DIAMOND</td>
+                        <td>B</td>
+                        <td>100</td>
+                        <td colspan="10"></td>
+                        <td><input type="text"/></td>
+                        <td><input type="text"/></td>
+                        <td>
+                            {% if last_draw_result.deluxe %}
+                                {{ last_draw_result.deluxe }}        
+                            
+                            {% else %}
+                                <img src="{% static 'loading.gif' %}" alt="Loading..." class="loading-gif">    
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>CASINO DIAMOND</td>
+                        <td>C</td>
+                        <td>100</td>
+                        <td colspan="10"></td>
+                        <td><input type="text"/></td>
+                        <td><input type="text"/></td>
+                        <td>
+                            {% if last_draw_result.casino %}
+                                {{ last_draw_result.casino }}
+                            {% else %}
+                                <img src="{% static 'loading.gif' %}" alt="Loading..." class="loading-gif">
+                            {% endif %}
+                        </td>   
+                    </tr>
+                    <tr>
+                        <td>EXPRESS DIAMOND</td>
+                        <td>D</td>
+                        <td>100</td>
+                        <td colspan="10"></td>
+                        <td><input type="text"/></td>
+                        <td><input type="text"/></td>
+                        <td>
+                            {% if last_draw_result.express %}
+                                {{ last_draw_result.express }}
+                            {% else %}
+                                <img src="{% static 'loading.gif' %}" alt="Loading..." class="loading-gif">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>GOLD PLAY DIAMOND</td>
+                        <td>E</td>
+                        <td>100</td>
+                        <td colspan="10"></td>
+                        <td><input type="text"/></td>
+                        <td><input type="text"/></td>
+                        <td>
+                            {% if last_draw_result.gold_play %}
+                                {{ last_draw_result.gold_play }}
+                                
+                            {% else %}
+                                <img src="{% static 'loading.gif' %}" alt="Loading..." class="loading-gif">
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-inputs">
+            <input type="text" placeholder="Card No:">
+            <input type="password" placeholder="Pin No:">
+            <input type="text" placeholder="Total:">
+        </div>
+        <div class="buttons">
+            <button>BUY</button>
+            <button>CLEAR</button>
+            <button>CURRENT DRAW</button>
+            <button>MORE DRAW</button>
+            <button>REPORT</button>
+            <button>RESULT</button>
+        </div>
+        <div class="footer">MORE...</div>
+        <div class="disclaimer">
+            Purchase of lottery using this website is strictly prohibited in the states where lotteries are banned. You must be above 18 years to play Online Lottery.
+            <br>
+            &copy; <a href="http://shreelaxmilucky.com">http://shreelaxmilucky.com</a> Group. All rights reserved.
+        </div>
+    </div>
+    <script>
+        // JavaScript to update "Now Time" and "Time To Draw" dynamically
+        function updateTime() {
+            const drawTime = new Date("{{ draw_time|date:'Y-m-d H:i:s' }}");
+            const now = new Date();
+
+            // Update Now Time
+            const nowTime = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            document.getElementById('now-time').textContent = nowTime;
+
+            // Calculate Time To Draw
+            const timeDiff = drawTime - now;
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+            const timeToDraw = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            document.getElementById('time-to-draw').textContent = timeToDraw;
+
+            // Update Dynamic Draw Time Header if needed
+            document.getElementById('dynamic-draw-time').textContent = drawTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+        }
+
+        // Update the time every second
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>

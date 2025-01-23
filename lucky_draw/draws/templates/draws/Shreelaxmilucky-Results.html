@@ -1,0 +1,272 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+        Shreelaxmilucky Results
+    </title>
+    <style type="text/css">
+        .accordion
+        {
+            width: 99%;
+        }
+        .accordionHeader
+        {
+            border: 1px solid #000;
+            color: #000;
+            background-color: #f0f8fa;
+            font-family: Arial, Sans-Serif;
+            font-size: 45px;
+            font-weight: bold;
+            padding: 5px;
+            margin-top: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .accordionHeaderSelected
+        {
+            border: 1px solid #ffffff;
+            color: #ffffff;
+            background-color: #5078B3;
+            font-family: Arial, Sans-Serif;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 5px;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        .accordionContent
+        {
+            background-color: #FFFFFF;
+            border: 1px dashed #2F4F4F;
+            border-top: none;
+            padding: 5px;
+            padding-top: 10px;
+        }
+        .ancher
+        {
+            color: #11a0eb;
+            font-family: Arial, Sans-Serif;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .resultstyle
+        {
+            color: #000000;
+            font-size: 24px;
+            text-transform: capitalize;
+            font-weight: bold;
+            background-color: #f7f2cb;
+            text-align: center;
+        }
+        .resultstyle1
+        {
+            color: #ffffff;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            background-color: #390b05;
+            text-align: center;
+        }
+        .result
+        {
+            color: #f0ed0d;
+            font-family: Verdana;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+            background-color: #73c7df;
+        }
+        .mGrid
+        {
+            width: 98%;
+            background-color: #fff;
+            margin: 5px010px0;
+            border: solid 1px #525252;
+            border-collapse: collapse;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
+        .mGrid td
+        {
+            padding: 5px;
+            border: solid 1px #c1c1c1;
+            text-align: center;
+        }
+        .mGrid th
+        {
+            padding: 4px2px;
+            color: red;
+            background-color: AliceBlue;
+            border: solid 1px #c1c1c1;
+            font-size: 23px;
+            height: 20px;
+        }
+        .mGrid .alt
+        {
+            background: #fcfcfc url(grd_alt.png) repeat-x top;
+        }
+        .mGrid .pgr
+        {
+            background: #424242 url(grd_pgr.png) repeat-x top;
+        }
+        .mGrid .pgr table
+        {
+            margin: 5px 0;
+        }
+        .mGrid .pgr td
+        {
+            border-width: 0;
+            padding: 06px;
+            border-left: solid1px#666;
+            font-weight: bold;
+            color: #fff;
+            line-height: 12px;
+        }
+        .mGrid .pgr a
+        {
+            color: #666;
+            text-decoration: none;
+        }
+        .mGrid .pgr a:hover
+        {
+            color: #000;
+            text-decoration: none;
+        }
+        .resultbox
+        {
+            border: solid 1px #000;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 80px;
+            height: 80px;
+            width: 100px;
+        }
+        .ugamename
+        {
+            font-size: 25px;
+            text-align: center;
+            font-weight: bold;
+            color: Black;
+        }
+        .bgamename
+        {
+            font-size: 18px;
+            text-align: center;
+            font-weight: bold;
+            color: Red;
+        }
+    </style>
+</head>
+
+<body style="margin: 0">
+    <div>
+    </div>
+    <br>
+    <div id="UpdatePanel1">
+
+        <table style="width: 1200px;" align="center" border="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td valign="top">
+                        <table style="width: 100%; height: auto" align="center" border="1" cellpadding="0" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td align="center" valign="top" style="color: Black; background-color: #f7f2cb; font-weight: bold;
+                                    font-size: 20px;">
+                                        <br>
+                                        <form method="get">
+
+                                            <label for="date">Select Date:</label>
+                                            <input type="date" id="date" name="date" value="{{ selected_date }}">
+                                            <button type="submit" class="btn btn-primary">Show Result</button>
+                                        </form>
+                                        <br>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" valign="top">
+                                        <table style="width: 100%" border="0" cellspacing="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div id="UpdateProgress1" style="display:none;" role="status" aria-hidden="true">
+
+                                                            <img id="Image2" src="#" style="border-width:0px;">
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="top" style="width: 80%" align="center">
+                                                        <fieldset>
+                                                            <div id="MyAccordion" class="accordion" style="height: auto; overflow: auto;">
+                                                                <input type="hidden" name="MyAccordion_AccordionExtender_ClientState" id="MyAccordion_AccordionExtender_ClientState" value="0">
+                                                                <div id="AccordionPane4_header" class="accordionHeader">
+
+                                                                    <a href="#" onclick="return false;" class="ancher">2Digit Result </a>
+
+                                                                </div>
+                                                                <div style="height: auto; overflow: auto; display: block;">
+                                                                    <div id="AccordionPane4_content" class="accordionContent" style="display: block;height: auto;overflow: auto;">
+
+                                                                        <table style="width:100%" border="2" cellspacing="5">
+                                                                            <tbody>
+
+                                                                                <tr>
+                                                                                    <td class="result">Draw Time</td>
+                                                                                    <td class="result">ROYAL</td>
+                                                                                    <td class="result">DELUXE</td>
+                                                                                    <td class="result">CASINO</td>
+                                                                                    <td class="result">EXPRESS</td>
+                                                                                    <td class="result">GOLD PLAY</td>
+                                                                                </tr>
+                                                                                {% for time, results in table_data.items %}
+                                                                                <tr>
+                                                                                    <td class="resultstyle">{{ time }}</td>
+                                                                                    <td class="resultstyle">{{ results.royal }}</td>
+                                                                                    <td class="resultstyle">{{ results.deluxe }}</td>
+                                                                                    <td class="resultstyle">{{ results.casino }}</td>
+                                                                                    <td class="resultstyle">{{ results.express }}</td>
+                                                                                    <td class="resultstyle">{{ results.gold_play }}</td>
+                                                                                </tr>
+                                                                                <tr></tr>
+                                                                                {% endfor %}
+
+                                                                            </tbody>
+                                                                        </table>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+</body>
+
+</html>

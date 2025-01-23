@@ -1,0 +1,145 @@
+{% extends 'draws/base.html' %}
+
+{% block content %}
+<style type="text/css">
+    .accordion
+    {
+        width: 99%;
+    }
+    .accordionHeader
+    {
+        border: 1px solid #000;
+        color: #000;
+        background-color: #f0f8fa;
+        font-family: Arial, Sans-Serif;
+        font-size: 45px;
+        font-weight: bold;
+        padding: 5px;
+        margin-top: 5px;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+    .accordionHeaderSelected
+    {
+        border: 1px solid #ffffff;
+        color: #ffffff;
+        background-color: #5078B3;
+        font-family: Arial, Sans-Serif;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 5px;
+        margin-top: 5px;
+        cursor: pointer;
+    }
+    .accordionContent
+    {
+        background-color: #FFFFFF;
+        border: 1px dashed #2F4F4F;
+        border-top: none;
+        padding: 5px;
+        padding-top: 10px;
+    }
+    .ancher
+    {
+        color: #11a0eb;
+        font-family: Arial, Sans-Serif;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: none;
+    }
+</style>
+    <div class="container mt-4">
+        <table style="width: 100%; height: auto" align="center" border="1" cellpadding="0" cellspacing="0">
+
+            <td align="center" valign="top" style="color: Black; background-color: #f7f2cb; font-weight: bold; font-size: 20px;">
+                <br>
+                <form method="get">
+    <label for="date">Select Date:</label>
+    <input type="date" id="date" name="date" value="{{ selected_date }}">
+    <button type="submit" class="btn btn-primary">Show Result</button>
+    
+</form>
+<br>
+
+</td>
+<table>
+    <style>
+        .accordionHeader {
+            border: 1px solid #000;
+            color: #000;
+            background-color: #f0f8fa;
+            font-family: Arial, Sans-Serif;
+            font-size: 45px;
+            font-weight: bold;
+            padding: 5px;
+            padding-top: 10px;
+            margin-top: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            
+        }
+        .result {
+            color: #f0ed0d;
+            font-family: Verdana;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+            background-color: #73c7df !important;
+            padding: 5px;
+            padding-top: 10px;
+        }
+        .resultstyle {
+            color: #000000;
+            font-size: 24px;
+            text-transform: capitalize;
+            font-weight: bold;
+            background-color: #f7f2cb !important;
+            text-align: center;
+            padding: 20px;
+            padding-top: 10px;
+        }
+        td {
+            padding: 10px; /* Adjust the padding as needed */
+            background-color: #f0f0f0; /* Set your desired background color */
+            border: 1px solid #ccc; /* Optional: Add border to the cells */
+        }
+        </style>
+        <center>
+        <div id="AccordionPane4_header" class="accordionHeader">
+			
+            <a href="#" onclick="return false;" class="ancher">2Digit Result </a>
+        
+</div>
+</center>
+</table>
+
+        </table>
+
+</div>
+<div id="AccordionPane4_content" class="accordionContent" style="display:block;">
+    <table class="table table-bordered mt-3" cellpadding="5">
+        <thead>
+            <tr>
+                <th class="result">Draw Time</th>
+                <th class="result">ROYAL</th>
+                <th class="result">DELUXE</th>
+                <th class="result">CASINO</th>
+                <th class="result">EXPRESS</th>
+                <th class="result">GOLD PLAY</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for time, results in table_data.items %}
+            <tr>
+                <td class="resultstyle">{{ time }}</td>
+                <td class="resultstyle">{{ results.royal }}</td>
+                <td class="resultstyle">{{ results.deluxe }}</td>
+                <td class="resultstyle">{{ results.casino }}</td>
+                <td class="resultstyle">{{ results.express }}</td>
+                <td class="resultstyle">{{ results.gold_play }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+  <h1>Generate Draw Results</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="apply" value="1">
+    <button type="submit" name="apply">Generate Draw Results</button>
+  </form>
+{% endblock %}
